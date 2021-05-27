@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    //git test
     // 物理按键事件处理
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event){
