@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    // 跳转至MainActivity2
     public void skip(View v) {
         Intent intent = new Intent(MainActivity.this, MainActivity2.class);
         startActivity(intent);
@@ -139,6 +140,12 @@ public class MainActivity extends AppCompatActivity {
         // http://www.jnlxsyj.com:8086/android/getAllData
         httpRequest.postRequest("http://124.128.84.40:8086/android/wAndroidInsert",map,mHandler);
         Toast.makeText(getApplicationContext(),"success",Toast.LENGTH_LONG).show();
+    }
+
+    // ID
+    public void skipToID(View v) {
+        Intent intent = new Intent(MainActivity.this, idActivity.class);
+        startActivity(intent);
     }
 
 }
