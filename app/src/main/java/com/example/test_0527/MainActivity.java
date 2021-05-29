@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Handler mHandler;
     private HttpRequest httpRequest;
+    String status="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +39,18 @@ public class MainActivity extends AppCompatActivity {
         mHandler=new Handler(){
             public void handleMessage(Message msg){
                 super.handleMessage(msg);
-                JSONArray array = (JSONArray) msg.obj;
-                System.out.println("status"+msg.arg1);
-                System.out.println("aaaaaaaaaaaaaaaaaaaaaaa"+msg.obj);
                 try {
-                    System.out.println("handler++++++++++++++++"+array.getJSONObject(0).get("identity"));
+                    JSONObject jsonObject = new JSONObject(msg.obj.toString());
+                    status = jsonObject.get("status").toString();
+                    System.out.println(status);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                System.out.println("aaaaaaaaaaaaaaaaaaaaaaa"+msg.obj);
+                if(status.equals("fail"))
+                    Toast.makeText(getApplicationContext(),"用户名已经被注册",Toast.LENGTH_LONG).show();
+                else
+                    Toast.makeText(getApplicationContext(),"注册成功",Toast.LENGTH_LONG).show();
             }
         };
     }
@@ -139,7 +145,8 @@ public class MainActivity extends AppCompatActivity {
         map.put("username","zmq");
         // http://www.jnlxsyj.com:8086/android/getAllData
         httpRequest.postRequest("http://124.128.84.40:8086/android/wAndroidInsert",map,mHandler);
-        Toast.makeText(getApplicationContext(),"success",Toast.LENGTH_LONG).show();
+
+
     }
 
     // ID

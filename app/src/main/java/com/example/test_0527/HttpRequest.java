@@ -92,21 +92,9 @@ public class HttpRequest {
                         Log.i("res",res);
                         Message msg = Message.obtain();
                         JSONObject jsonRes = new JSONObject(res);
-                        // 返回成功
-                        if(jsonRes.get("status").toString().equals("success")){
-                            msg.arg1 = 1;
-                            if(jsonRes.get("data")!=null||jsonRes.get("data").toString().equals("null")){
-                                JSONArray array = new JSONArray(jsonRes.get("data").toString());
-                                // 这里传过去的是data中的数据,以JSONArray的形式
-                                msg.obj= array;
-                                mHandler.sendMessage(msg);
-                                JSONObject object = array.getJSONObject(0);
-                                System.out.println(object.get("identity"));
-                            }
-                        }else{
-                            // 返回失败
-                            msg.arg1 = 0;
-                        }
+                        msg.arg1 = 1;
+                        msg.obj= res;
+                        mHandler.sendMessage(msg);
                     }
                     conn.disconnect();
                 } catch (IOException | JSONException e) {
