@@ -20,6 +20,7 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
+        // 数据传递
         Intent intent = getIntent();
         String account = intent.getStringExtra("account");
         String password = intent.getStringExtra("password");
@@ -32,11 +33,13 @@ public class MainActivity2 extends AppCompatActivity {
 
     }
 
+    // 跳转
     public void skipToMain(View v) {
         Intent intent = new Intent(MainActivity2.this, MainActivity.class);
         startActivity(intent);
     }
 
+    // Fragment跳转
     public void toFirst(View v){
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
@@ -45,7 +48,7 @@ public class MainActivity2 extends AppCompatActivity {
                 .addToBackStack("name")
                 .commit();
     }
-
+    // Fragment跳转
     public void toSecond(View v){
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
@@ -54,7 +57,7 @@ public class MainActivity2 extends AppCompatActivity {
                 .addToBackStack("name")
                 .commit();
     }
-
+    // Fragment跳转
     public void toThird(View v){
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()

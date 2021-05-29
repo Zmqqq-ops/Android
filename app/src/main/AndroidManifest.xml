@@ -8,7 +8,9 @@
         android:label="Mendy"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Test_0527">
+        android:theme="@style/Theme.Test_0527"
+
+        android:usesCleartextTraffic="true">
         <activity
             android:name=".MainActivity3"
             android:label="@string/title_activity_main3"
@@ -25,5 +27,8 @@
             </intent-filter>
         </activity>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>
