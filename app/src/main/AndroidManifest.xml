@@ -11,10 +11,12 @@
         android:theme="@style/Theme.Test_0527"
 
         android:usesCleartextTraffic="true">
+
         <activity
             android:name=".MainActivity3"
             android:label="@string/title_activity_main3"
-            android:theme="@style/Theme.Test_0527.NoActionBar"></activity>
+            android:theme="@style/Theme.Test_0527.NoActionBar">
+        </activity>
         <activity
             android:name=".MainActivity2"
             android:label="@string/title_activity_main2"

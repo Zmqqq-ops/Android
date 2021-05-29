@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -43,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
             }
         };
     }
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // 按钮_点我
-    public void click_me(View v){
+    public void clickMe(View v){
         AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("AlertDialog")
                 .setIcon(R.drawable.h2)
@@ -85,22 +86,38 @@ public class MainActivity extends AppCompatActivity {
 
     // 按钮_登录
     public void login(View v) {
+
+        SharedPreferences sp = getSharedPreferences("loginData",MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+
         TextView account = findViewById(R.id.editTextNumber);
         TextView password = findViewById(R.id.editTextTextPassword);
 
-        Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-        intent.putExtra("account",account.getText().toString());
-        intent.putExtra("password",password.getText().toString());
+        editor.putString("username",account.getText().toString());
+        editor.putString("password",password.getText().toString());
+        editor.putBoolean("isLogin",true);
+        editor.commit();
 
+        Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+        // intent.putExtra("account",account.getText().toString());
+        // intent.putExtra("password",password.getText().toString());
+        Toast.makeText(getApplicationContext(),"登录成功",Toast.LENGTH_LONG).show();
         startActivity(intent);
     }
 
-    public void handle(View v) {
+    public void skip(View v) {
+        Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+        startActivity(intent);
+    }
+
+    // 时间
+    public void timeHandle(View v) {
         Intent intent = new Intent(MainActivity.this, MainActivity3.class);
         startActivity(intent);
     }
 
-    public void save_date(View v) throws IOException {
+    // 数据存储
+    public void saveDate(View v) throws IOException {
         String fileName = "data.txt";                       // 文件名称
         String content = "hello_world";                     // 保存数据
         FileOutputStream fos = openFileOutput(fileName, MODE_PRIVATE);
@@ -109,24 +126,19 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),"file saving",Toast.LENGTH_LONG).show();
     }
 
-
     //  有参请求
-    public void http_post(View v) {
-
+    public void httpPost(View v) {
         // {"studentId":"","hometown":"","password":"aaa","name":"","id":6,"hobby":"","username":"ljh"}
         HashMap map = new HashMap();
         map.put("studentId","1808030219");
-        map.put("hometown","湖南");
+        map.put("hometown","Hunan");
         map.put("password","zmq");
         map.put("name","周孟卿");
-        map.put("hobby","lalalalalal");
+        map.put("hobby","photography");
         map.put("username","zmq");
-
         // http://www.jnlxsyj.com:8086/android/getAllData
         httpRequest.postRequest("http://124.128.84.40:8086/android/wAndroidInsert",map,mHandler);
-
-
-
+        Toast.makeText(getApplicationContext(),"success",Toast.LENGTH_LONG).show();
     }
 
 }

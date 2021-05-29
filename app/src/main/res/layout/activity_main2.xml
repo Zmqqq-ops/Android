@@ -16,16 +16,30 @@
 
     <Button
         android:id="@+id/button2"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="200dp"
+        android:onClick="logOut"
+        android:text="退出登录"
+        android:textSize="20sp"
+        app:backgroundTint="#F9C19E"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <Button
+        android:id="@+id/button16"
         android:layout_width="110dp"
         android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="200dp"
         android:onClick="skipToMain"
         android:text="返回"
         android:textSize="20sp"
         app:backgroundTint="#F9C19E"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button2"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <Button
@@ -33,39 +47,37 @@
         android:layout_width="110dp"
         android:layout_height="55dp"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:onClick="toFirst"
         android:text="1"
         android:textSize="24sp"
-        android:onClick="toFirst"
         app:backgroundTint="#99C5AC"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintEnd_toStartOf="@+id/button5"
         app:layout_constraintTop_toBottomOf="@+id/button2" />
 
     <Button
         android:id="@+id/button5"
-        android:layout_width="110dp"
+        android:layout_width="120dp"
         android:layout_height="55dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
         android:layout_marginTop="40dp"
+        android:onClick="toSecond"
         android:text="2"
         android:textSize="24sp"
-        android:onClick="toSecond"
         app:backgroundTint="#99C5AC"
-        app:layout_constraintStart_toEndOf="@+id/button4"
+        app:layout_constraintStart_toStartOf="@+id/button2"
         app:layout_constraintTop_toBottomOf="@+id/button2" />
 
     <Button
         android:id="@+id/button6"
         android:layout_width="110dp"
         android:layout_height="55dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="40dp"
+        android:onClick="toThird"
         android:text="3"
         android:textSize="24sp"
-        android:onClick="toThird"
         app:backgroundTint="#99C5AC"
         app:layout_constraintStart_toEndOf="@+id/button5"
         app:layout_constraintTop_toBottomOf="@+id/button2" />

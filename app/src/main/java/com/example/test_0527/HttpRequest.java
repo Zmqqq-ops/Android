@@ -107,9 +107,6 @@ public class HttpRequest {
                             // 返回失败
                             msg.arg1 = 0;
                         }
-
-
-
                     }
                     conn.disconnect();
                 } catch (IOException | JSONException e) {
