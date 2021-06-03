@@ -46,7 +46,7 @@ public class idActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_id);
 
-        imageView = (ImageView) findViewById(R.id.imageView2);
+        imageView = (ImageView) findViewById(R.id.imageView3);
         tv_name = (TextView) findViewById(R.id.textView4);
         tv_id = (TextView) findViewById(R.id.textView5);
         tv_address = (TextView) findViewById(R.id.textView6);
@@ -55,23 +55,15 @@ public class idActivity extends AppCompatActivity {
             public void handleMessage(Message msg) {
                 try {
                     JSONObject json = new JSONObject((String)msg.obj);
-                    username=json.getJSONObject("words_result")
-                            .getJSONObject("姓名").
-                                    getString("words");
-                    id=json.getJSONObject("words_result")
-                            .getJSONObject("公民身份号码").
-                                    getString("words");
-                    address=json.getJSONObject("words_result")
-                            .getJSONObject("住址").
-                                    getString("words");
+                    username=json.getJSONObject("words_result").getJSONObject("姓名").getString("words");
+                    id=json.getJSONObject("words_result").getJSONObject("公民身份号码").getString("words");
+                    address=json.getJSONObject("words_result").getJSONObject("住址").getString("words");
                     tv_name.setText("姓名："+username);
                     tv_id.setText("身份号码："+id);
                     tv_address.setText("住址："+address);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
             };
         };
 
@@ -114,10 +106,12 @@ public class idActivity extends AppCompatActivity {
         startActivityForResult(intent, 1);
 
     }
+
     public void openCamera(View v){
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE); // 关键：新建相机的 Intent
         startActivityForResult(intent, 1); // 加载相机 Activity
     }
+
     public void openLocalPic(View v){
         //打开本地相册
         Intent i = new Intent(
@@ -126,6 +120,7 @@ public class idActivity extends AppCompatActivity {
         //设定结果返回
         startActivityForResult(i, 2);
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -164,13 +159,14 @@ public class idActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
     public void upload(View v){
         final Map<String,String> params = new HashMap<String,String>();
         params.put("pic", picBase64);
         params.put("username", username);
         params.put("id", id);
         params.put("address", address);
-        new Thread(new Runnable() {//创建子线程
+        new Thread(new Runnable() { //创建子线程
             public void run() {
                 try{
                     String strUrlPath = "http://58.87.74.112:8080/2016/android/saveIDInfo.jsp";
@@ -184,6 +180,5 @@ public class idActivity extends AppCompatActivity {
             }
         }).start();
     }
-
 
 }

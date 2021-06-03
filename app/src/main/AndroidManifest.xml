@@ -5,24 +5,39 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="Mendy"
+        android:icon="@drawable/road"
+        android:label="沿途"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Test_0527"
         android:usesCleartextTraffic="true">
-        <activity android:name=".idActivity"></activity>
+
+        <activity android:name=".SurfaceViewActivity">
+
+        </activity>
+
+        <service
+            android:name=".MyService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".idActivity" />
+
         <activity
             android:name=".MainActivity3"
             android:label="@string/title_activity_main3"
             android:theme="@style/Theme.Test_0527.NoActionBar" />
+
         <activity
             android:name=".MainActivity2"
             android:label="@string/title_activity_main2"
             android:theme="@style/Theme.Test_0527.NoActionBar" />
+
         <activity android:name=".MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

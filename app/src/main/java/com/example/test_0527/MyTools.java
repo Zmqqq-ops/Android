@@ -41,6 +41,7 @@ public class MyTools {
         }
         return result;
     }
+
     public static StringBuffer getRequestData(Map<String, String> params, String encode) {
         StringBuffer stringBuffer = new StringBuffer();        //存储封装好的请求体信息
         try {
@@ -76,8 +77,8 @@ public class MyTools {
     public static String submitPostData(String strUrlPath,Map<String, String> params, String encode) {
         System.out.println(getRequestData1(params, encode).toString());
         byte[] data = getRequestData(params, encode).toString().getBytes();//获得请求体
-        String s="image=aaa&id_card_side=front";
-        data=s.getBytes();
+        //String s="image=aaa&id_card_side=front";
+        //data=s.getBytes();
         try {
 
             URL url = new URL(strUrlPath);

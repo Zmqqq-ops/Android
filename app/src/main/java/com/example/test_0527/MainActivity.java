@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         // Http Request
         httpRequest = new HttpRequest();
         mHandler=new Handler(){
@@ -152,6 +153,11 @@ public class MainActivity extends AppCompatActivity {
     // ID
     public void skipToID(View v) {
         Intent intent = new Intent(MainActivity.this, idActivity.class);
+        startActivity(intent);
+    }
+
+    public void toCamera(View v) {
+        Intent intent = new Intent(MainActivity.this, SurfaceViewActivity.class);
         startActivity(intent);
     }
 
